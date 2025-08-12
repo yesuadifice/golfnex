@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Choose Time Slot</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Top Info -->
+  <div class="mb-4">
+    <h2 class="text-lg font-semibold">{{ locationName }}</h2>
+    <p class="text-sm text-gray-600">Selected Date: {{ selectedDate }}</p>
+  </div>
+
+  <!-- Calendar Toggle -->
+  <ion-button expand="block" (click)="toggleCalendar()">
+    {{ showCalendar ? 'Hide Calendar' : 'Select Date' }}
+  </ion-button>
+
+  <ion-datetime
+    *ngIf="showCalendar"
+    presentation="date"
+    [min]="minDate"
+    [max]="maxDate"
+    (ionChange)="onDateChange($event)"
+  ></ion-datetime>
+
+  <!-- Scrollable Grid -->
+  <div class="grid-scroll-container mt-4">
+    <h3 class="text-md font-semibold mb-2">Available Time Slots:</h3>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" size-md="4" *ngFor="let slot of availableTimes">
+          <ion-card
+            (click)="selectTime(slot)"
+            [class.selected]="selectedTime === slot.time"
+            class="cursor-pointer"
+          >
+            <ion-card-content>
+              <p class="font-semibold">{{ slot.time }}</p>
+              <p class="text-sm text-gray-600">${{ slot.price }}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <!-- ✅ Action Button Always Visible -->
+ 
+</ion-content>
+
+
+ <div class="action-button-container">
+    <ion-button expand="block" [disabled]="!selectedTime" (click)="proceedToGuestInfo()">
+      Continue to Guest Info
+    </ion-button>
+  </div>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title size="small">Powered by YourApp</ion-title>
+  </ion-toolbar>
+</ion-footer>

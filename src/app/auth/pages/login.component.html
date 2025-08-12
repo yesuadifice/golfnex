@@ -1,0 +1,38 @@
+<ion-content fullscreen class="ion-padding login-page-content">
+  <!-- 🖼️ Image Slider -->
+  <div class="slider-container">
+    <img
+      [src]="images[currentImageIndex]"
+      alt="Slider Image"
+      class="slider-image"
+    />
+  </div>
+
+  <!-- ✅ User Greeting (Signal-safe access) -->
+  <div *ngIf="user()?.displayName" class="user-greeting">
+    Welcome, {{ user().displayName }}!
+  </div>
+
+  <!-- ⚠️ Error Message -->
+  <ion-text *ngIf="errorMessage()" color="danger" class="error-message">
+    {{ errorMessage() }}
+  </ion-text>
+
+  <!-- ⏳ Loading Spinner -->
+  <ion-spinner *ngIf="loading()" name="crescent" class="loading-spinner"></ion-spinner>
+
+  <!-- 🔐 Google Sign-In -->
+  <div class="google-login-section">
+    <p class="signin-text">Or sign in with</p>
+    <ion-button
+      fill="clear"
+      shape="round"
+      (click)="loginWithGoogle()"
+      [disabled]="loading()"
+      aria-label="Sign in with Google"
+      class="google-button"
+    >
+      <img src="assets/images/logo-google.png" alt="Google" class="google-icon" />
+    </ion-button>
+  </div>
+</ion-content>

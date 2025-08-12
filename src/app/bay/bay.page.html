@@ -1,0 +1,76 @@
+<ion-header class="ion-no-border bg-white shadow">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="text-gray-800 font-bold text-center">Select Bay</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="ion-padding bg-gray-50 relative">
+
+  <!-- Background layers -->
+  <div
+    class="fixed inset-0 bg-cover bg-center z-0"
+    style="background-image: url('/assets/images/golf-hero.jpg');"
+  >
+    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  </div>
+
+  <!-- Content above the background -->
+  <div class="relative z-10 max-w-md mx-auto">
+    <h1 class="text-2xl font-bold text-center my-4 text-white">Select a Bay</h1>
+
+    <div class="grid grid-cols-2 gap-4">
+      <div
+        *ngFor="let bay of bays"
+        (click)="selectBay(bay.id)"
+        class="rounded-xl p-4 border shadow cursor-pointer transition duration-300 text-center"
+        [ngClass]="getBayButtonClasses(bay)"
+        [class.pointer-events-none]="bay.status === 'occupied'"
+      >
+        <h2 class="text-lg font-semibold">{{ bay.name }}</h2>
+        <p class="font-medium">
+          {{ bay.status === 'available' ? 'Available' : 'Occupied' }}
+        </p>
+      </div>
+    </div>
+
+    <div *ngIf="selectedBay" class="mt-6 border-t pt-4 bg-white bg-opacity-80 rounded-lg p-4">
+      <h3 class="text-xl font-bold mb-2">Booking Summary</h3>
+      <p><strong>Location:</strong> {{ locationName }}</p>
+      <p><strong>Date:</strong> {{ selectedDate }}</p>
+      <p><strong>Time:</strong> {{ timingId }}</p>
+      <p><strong>Bay:</strong> {{ selectedBay.name }}</p>
+      <p><strong>Base Price:</strong> ${{ selectedPrice }}</p>
+
+      <!-- Extras prompt -->
+      <div *ngIf="showExtrasPrompt" class="mt-4">
+        <h4 class="font-semibold mb-2">Would you like to add these options?</h4>
+
+        <ion-item lines="none">
+          <ion-label>Private Lounge (+${{ loungePrice }})</ion-label>
+          <ion-checkbox slot="end" [(ngModel)]="wantsLounge"></ion-checkbox>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label>Beverage (+${{ beveragePrice }})</ion-label>
+          <ion-checkbox slot="end" [(ngModel)]="wantsBeverage"></ion-checkbox>
+        </ion-item>
+      </div>
+
+      <p class="mt-4 text-lg font-bold">Total Price: ${{ totalPrice }}</p>
+    </div>
+
+    <ion-button
+      expand="block"
+      color="primary"
+      class="mt-6"
+      [disabled]="!selectedBayId"
+      (click)="proceedToPayment()"
+    >
+      Continue to Payment
+    </ion-button>
+  </div>
+
+</ion-content>

@@ -1,0 +1,50 @@
+<!-- 🌄 Fixed background image -->
+<div class="background-image"></div>
+
+<!-- 🧭 App header -->
+<ion-header class="ion-no-border layout-header">
+  <ion-toolbar class="bg-transparent">
+    <div class="header-inner flex justify-between items-center px-4 py-2 bg-white rounded-b-xl shadow-sm">
+      <h1 class="text-xl font-bold text-gray-800">GolfNex</h1>
+
+      <!-- ✅ Profile photo now wrapped with navigation link -->
+      <a [routerLink]="['/profile']">
+        <img
+          *ngIf="profilePhotoUrl()"
+          [src]="profilePhotoUrl()"
+          alt="Profile"
+          class="w-12 h-12 rounded-full object-cover border border-gray-300 shadow-sm cursor-pointer transition-transform hover:scale-105"
+        />
+      </a>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<!-- 🧩 Routed page content -->
+<ion-content class="layout-content flex flex-col flex-grow">
+  <router-outlet></router-outlet>
+</ion-content>
+
+<!-- 🚀 Footer navigation -->
+<ion-footer class="layout-footer bg-[#f9f9f9] border-t border-gray-300">
+  <ion-toolbar class="bg-[#f9f9f9]">
+    <div class="footer-buttons flex justify-around items-center py-2 text-gray-600">
+      <button
+        [routerLink]="['/home']"
+        routerLinkActive="text-black"
+        [routerLinkActiveOptions]="{ exact: true }"
+      >
+        <ion-icon name="home-outline" size="large"></ion-icon>
+      </button>
+      <button [routerLink]="['/smart-access']" routerLinkActive="text-black">
+        <ion-icon name="key-outline" size="large"></ion-icon>
+      </button>
+      <button [routerLink]="['/tournments']" routerLinkActive="text-black">
+        <ion-icon name="trophy-outline" size="large"></ion-icon>
+      </button>
+      <button [routerLink]="['/membership']" routerLinkActive="text-black">
+        <ion-icon name="people-circle-outline" size="large"></ion-icon>
+      </button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

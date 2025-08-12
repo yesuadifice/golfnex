@@ -1,0 +1,135 @@
+/* Prevent scrolling */
+.no-scroll {
+  --overflow: hidden;
+  overflow: hidden !important;
+}
+
+/* Transparent background for ion-content */
+ion-content {
+  --background: transparent;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Wrapper fills the screen */
+.splash-wrapper {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Keep button at bottom */
+  align-items: center;
+}
+
+/* Background image fills screen without distortion */
+.splash-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+}
+
+/* Centered GOLFNEX title */
+.golfnex-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  z-index: 10;
+  text-align: center;
+}
+
+/* Button wrapper stays above background */
+.button-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding: 0 20px 40px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Stylish Get Started button */
+.get-started-button {
+  --background: #1e90ff;
+  --background-hover: #1c86ee;
+  --border-radius: 50px;
+  --box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  font-weight: 600;
+  width: 100%;
+  max-width: 320px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+/* Golf animation container */
+.golf-course {
+  position: absolute;
+  bottom: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px;
+  height: 100px;
+  background: linear-gradient(90deg, #4caf50 0%, #388e3c 100%);
+  border-radius: 50px / 25px;
+  overflow: visible;
+  z-index: 5;
+}
+
+/* Golf ball styling and animation */
+.golf-ball {
+  position: absolute;
+  top: 35px;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: inset 0 0 10px #ccc;
+  animation: roll-to-hole 3s ease-in-out forwards;
+}
+
+/* Golf hole styling */
+.hole {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 15px;
+  background: radial-gradient(ellipse at center, black 40%, transparent 70%);
+  border-radius: 50% / 50%;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* Animation keyframes for golf ball rolling */
+@keyframes roll-to-hole {
+  0% {
+    left: 10px;
+    top: 35px;
+    transform: rotate(0deg);
+    opacity: 1;
+  }
+  70% {
+    left: 140px;
+    top: 35px;
+    transform: rotate(720deg);
+    opacity: 1;
+  }
+  100% {
+    left: 150px;
+    top: 50px;
+    transform: rotate(900deg);
+    opacity: 0;
+  }
+}

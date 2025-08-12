@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Guest Information</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <p><strong>Court:</strong> {{ courtName }} | <strong>Time:</strong> {{ selectedTime }}</p>
+
+  <form [formGroup]="guestForm">
+    <ion-item>
+      <ion-label>Number of Guests</ion-label>
+      <ion-select formControlName="guestCount" interface="popover">
+        <ion-select-option *ngFor="let n of [1,2,3]" [value]="n">{{ n }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ng-container formArrayName="beers">
+      <ng-container *ngFor="let control of beersControls; let i = index">
+        <ion-item>
+          <ion-label>Beers for Guest {{ i + 1 }}</ion-label>
+          <ion-select [formControl]="control" interface="popover">
+            <ion-select-option *ngFor="let b of [0,1,2,3]" [value]="b">
+              {{ b }} ({{ b * beerPrice | currency:'USD' }})
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ng-container>
+    </ng-container>
+
+    <ion-item>
+      <ion-label>Lounge Service</ion-label>
+      <ion-toggle formControlName="lounge"></ion-toggle>
+    </ion-item>
+  </form>
+
+  <ion-item lines="none" class="mt-3">
+    <ion-label>
+      <strong>Pricing Summary:</strong><br />
+      • 🍺 Beer: ${{ beerPrice }} per drink<br />
+      • 🛋️ Lounge: ${{ loungePrice }} flat rate
+    </ion-label>
+  </ion-item>
+
+  <ion-item lines="none">
+    <ion-label><strong>Total:</strong> ${{ totalBill }}</ion-label>
+  </ion-item>
+
+  <ion-button expand="block" (click)="proceedToPayment()">Continue to Payment</ion-button>
+</ion-content>

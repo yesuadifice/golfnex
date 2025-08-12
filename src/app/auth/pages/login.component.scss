@@ -1,0 +1,23 @@
+ion-content {
+  --background: white;
+  height: 100%;
+  overflow: hidden;
+}
+@keyframes slide-fade-bounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.8);
+  }
+  70% {
+    opacity: 1;
+    transform: translateY(10px) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-slide-fade-bounce {
+  animation: slide-fade-bounce 1.5s ease-in-out forwards;
+}

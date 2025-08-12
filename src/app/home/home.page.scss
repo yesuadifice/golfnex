@@ -1,0 +1,33 @@
+ion-content {
+  --background: #f8faf7;
+  --padding-bottom: 70px;
+  --padding-top:20px;
+}
+
+
+
+ion-select {
+  --placeholder-color: #6b7280;
+  --placeholder-opacity: 1;
+  --padding-start: 0;
+}
+
+ion-datetime {
+  --background: white;
+  --background-rgb: 255, 255, 255;
+  border-radius: 0.5rem;
+}
+
+ion-item {
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --min-height: 48px;
+}
+
+ion-list {
+  background: transparent;
+}
+
+ion-footer {
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.05);
+}

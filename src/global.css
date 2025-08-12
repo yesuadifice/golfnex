@@ -1,0 +1,50 @@
+/* ---------------------------------------------------
+ * App Global CSS
+ * ---------------------------------------------------
+ * All @import rules must be at the top of the file.
+ * Custom styles go below.
+ * ---------------------------------------------------
+ */
+
+/* ✅ Ionic Core CSS */
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* ✅ Ionic Utility CSS */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/* ✅ Ionic Dark Mode */
+@import "@ionic/angular/css/palettes/dark.system.css";
+
+/* ✅ Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ✅ Custom Styles */
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+ion-content {
+  --padding-start: 0;
+  --padding-end: 0;
+  --padding-top: 0;
+  --padding-bottom: 0;
+}
+
+/* Make ion-datetime text black */
+ion-datetime::part(content),
+ion-datetime::part(calendar-day),
+ion-datetime::part(month-year),
+ion-datetime::part(day),
+ion-datetime::part(day-names) {
+  color: black !important;
+}

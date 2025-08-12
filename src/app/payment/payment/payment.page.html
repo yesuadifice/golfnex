@@ -1,0 +1,35 @@
+<ion-content>
+  <!-- Order Summary -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Order Summary</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Location:</strong> {{ location }}</p>
+      <p><strong>Date:</strong> {{ date | date:'mediumDate' }}</p>
+      <p><strong>Time:</strong> {{ time }}</p>
+      <p><strong>Amount:</strong> ${{ price | number:'1.2-2' }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Payment Method Selection -->
+  <ion-list>
+    <ion-radio-group [(ngModel)]="selectedMethod">
+      <ion-item *ngFor="let method of paymentMethods">
+        <ion-icon [name]="method.icon" slot="start"></ion-icon>
+        <ion-label>{{ method.name }}</ion-label>
+        <ion-radio [value]="method.id"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
+  <!-- Stripe Card Element -->
+  @if (selectedMethod === 'card') {
+    <div id="card-element" class="stripe-card-element"></div>
+  }
+
+  <!-- Submit Button -->
+  <ion-button expand="block" (click)="submitPayment()">
+    Submit Payment
+  </ion-button>
+</ion-content>

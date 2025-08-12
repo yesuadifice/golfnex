@@ -1,0 +1,30 @@
+<ion-content class="ion-padding flex flex-col items-center justify-center">
+  <img
+    *ngIf="photoURL"
+    [src]="photoURL"
+    alt="Profile Photo"
+    class="w-24 h-24 rounded-full border shadow mb-4 object-cover"
+  />
+
+  <ion-button color="danger" (click)="logout()">Logout</ion-button>
+
+  <div class="mt-6 w-full max-w-md">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Visa ending in 1234</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Exp: 07/26 • Status: Active
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Mastercard ending in 5678</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        Exp: 01/27 • Status: Inactive
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>

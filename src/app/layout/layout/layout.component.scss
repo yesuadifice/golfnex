@@ -1,0 +1,21 @@
+.background-image {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/assets/images/golf-hero.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.layout-header,
+.layout-content,
+.layout-footer {
+  position: relative;
+  z-index: 10;
+}
+
+ion-content {
+  background: transparent !important;
+  --background: transparent !important;
+}

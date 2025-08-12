@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Smart Access</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div *ngIf="tickets.length === 0">
+    <p>No tickets available. Book a bay first.</p>
+  </div>
+
+  <ion-card *ngFor="let ticket of tickets">
+    <ion-card-header>
+      <ion-card-title>{{ ticket.location }}</ion-card-title>
+      <ion-card-subtitle>{{ ticket.date }} at {{ ticket.time }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <p><strong>Unlock Code:</strong> {{ ticket.code }}</p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" (click)="goHome()">Back to Home</ion-button>
+</ion-content>

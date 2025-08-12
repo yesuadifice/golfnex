@@ -1,0 +1,22 @@
+<ion-content>
+  <div *ngIf="isSuccess; else failure">
+    <ion-icon name="checkmark-circle" color="success"></ion-icon>
+    <h1>Payment Successful!</h1>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Your Ticket</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Bay Access Key:</strong> {{ accessKey }}</p>
+        <p><strong>Location:</strong> {{ location }}</p>
+        <p><strong>Time:</strong> {{ time }}</p>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ng-template #failure>
+    <ion-icon name="close-circle" color="danger"></ion-icon>
+    <h1>Payment Failed</h1>
+    <ion-button (click)="router.navigate(['/payment'])">Retry</ion-button>
+  </ng-template>
+</ion-content>
